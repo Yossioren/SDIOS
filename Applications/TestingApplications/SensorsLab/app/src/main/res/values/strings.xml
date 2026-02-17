@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SensorsLab</string>
+    <string name="appTitle">SensorsLab</string>
+    <string name="gyroscope">gyroscope</string>
+    <string name="magnetometer">magnetometer</string>
+    <string name="accelerometer">accelerometer</string>
+</resources>

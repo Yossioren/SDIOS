@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<resources>
+    <string name="app_name">SDIOS client</string>
+    <string name="service_demo_tag">sdios_client_lib</string>
+    <string name="tag">client</string>
+    <string name="string_startservice">start service</string>
+    <string name="string_stopservice">stop service</string>
+    <string name="string_bind">bind service</string>
+    <string name="string_unbind">unbind service</string>
+    <string name="string_getrandom_number">get random</string>
+    <string name="sayHello">HELLO SERVICE</string>
+    <string name="getSum">get sum</string>
+    <string name="regSensor">register sensor</string>
+    <string name="unRegSensor">unregister sensor</string>
+</resources>

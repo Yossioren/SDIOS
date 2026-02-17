@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<resources>
+    <string name="app_name">SDIOS Service control</string>
+    <string name="service_demo_tag">tflite_service</string>
+    <string name="string_start_service">start service</string>
+    <string name="string_stop_service">stop service</string>
+    <string name="string_bind">bind service</string>
+    <string name="string_unbind">unbind service</string>
+    <string name="string_get_random_number">get random</string>
+    <string name="sayHello">HELLO SERVICE</string>
+    <string name="title_activity_choose_update">ChooseUpdate</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="disabled">Disabled</string>
+    <string name="enabled">Enabled</string>
+    <string name="update_models">update models</string>
+    <string name="welcome_to_sdios_settings">Welcome to SDIOS settings</string>
+    <string name="set_threshold">Set threshold</string>
+    <string name="update_threshold">update threshold</string>
+    <string name="txt_threshold">Set threshold</string>
+    <string name="slider_desc">threshold amount</string>
+    <string name="Gyroscope">Gyrocsope</string>
+    <string name="Magnetometer">Magnetometer</string>
+    <string name="Accelerometer">Accelerometer</string>
+    <string name="service_description">SDIOS OS app that can detect anomalous behaviour in sensors</string>
+    <string name="please_wait">Downloading please wait</string>
+    <string name="please_choose_one_package">Please choose one package</string>
+    <string name="use_default">Use default</string>
+    <string name="score_board">score board</string>
+    <string name="update_server">Update SDIOS-models server address</string>
+    <string name="settings">settings</string>
+    <string name="apply">apply</string>
+</resources>

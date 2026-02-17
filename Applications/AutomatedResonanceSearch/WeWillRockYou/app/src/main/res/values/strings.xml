@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Find sensor frequency</string>
+    <string name="appTitle">WE WILL ROCK YOU</string>
+    <string name="finish">FIN</string>
+    <string name="timeSt">%s:%s</string>
+    <string name="empty">Empty</string>
+    <string name="magenetormeter_short">M</string>
+    <string name="accelerometer_short">A</string>
+    <string name="gyroscope_short">G</string>
+    <string name="stop">Stop it!</string>
+    <string name="start_recording">Record it!</string>
+    <string name="start_rocking">Rock it!</string>
+</resources>

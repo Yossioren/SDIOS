@@ -1,0 +1,10 @@
+# server
+flask
+werkzeug
+
+# client
+requests
+tensorflow # convert h5 to tflite on upload
+
+# keypair
+pycryptodome

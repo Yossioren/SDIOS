@@ -1,0 +1,827 @@
+{
+    "package_name": "GAF_anomaly_detector_lite",
+    "version": 1.3,
+    "description": "Autoencoder trained on benign SDIOS dataset, converted to GAF",
+    "classifiers_map": [
+        {
+            "name": "gyroscope_x_pipeline",
+            "input": {
+                "sensors": ["gyroscope"],
+                "data_collection": {
+                    "method": "time",
+                    "parameters": {"collect_ms": 2000}
+                },
+                "skip_samples": {
+                    "method": "time",
+                    "parameters": {"skip_ms": 400},
+                    "user_config": [
+                        {
+                            "var_name": "skip_ms",
+                            "friendly_name": "Gyroscope X pipeline - evaluate the events every ms:",
+                            "category": "pipelines",
+                            "type": "bar",
+                            "low": 0,
+                            "high": 2000
+                        }
+                    ]
+                }
+            },
+            "preprocess": [
+                {
+                    "method": "extract_axes",
+                    "parameters": {"axes": ["x", "t"], "extract_timestamp": true}
+                },
+                {"method": "fixed_time", "parameters": {"samples_per_second": 60}},
+                {"method": "enforce_size", "parameters": {"shape": [120]}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -30,
+                        "from_end": 30,
+                        "to_start": -1,
+                        "to_end": 1
+                    }
+                },
+                {"method": "gaf", "parameters": {"method": "summation"}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -1,
+                        "from_end": 1,
+                        "to_start": 0,
+                        "to_end": 1
+                    }
+                },
+                {
+                    "method": "transform_to_tensorflow_buffer",
+                    "parameters": {"type": "float32", "shape": [1, 120, 120, 1]}
+                }
+            ],
+            "classifiers": ["gyroscope_x_encoder", "gyroscope_x_decoder"]
+        },
+        {
+            "name": "gyroscope_y_pipeline",
+            "input": {
+                "sensors": ["gyroscope"],
+                "data_collection": {
+                    "method": "time",
+                    "parameters": {"collect_ms": 2000}
+                },
+                "skip_samples": {
+                    "method": "time",
+                    "parameters": {"skip_ms": 400},
+                    "user_config": [
+                        {
+                            "var_name": "skip_ms",
+                            "friendly_name": "Gyroscope Y pipeline - evaluate the events every ms:",
+                            "category": "pipelines",
+                            "type": "bar",
+                            "low": 0,
+                            "high": 2000
+                        }
+                    ]
+                }
+            },
+            "preprocess": [
+                {
+                    "method": "extract_axes",
+                    "parameters": {"axes": ["y", "t"], "extract_timestamp": true}
+                },
+                {"method": "fixed_time", "parameters": {"samples_per_second": 60}},
+                {"method": "enforce_size", "parameters": {"shape": [120]}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -30,
+                        "from_end": 30,
+                        "to_start": -1,
+                        "to_end": 1
+                    }
+                },
+                {"method": "gaf", "parameters": {"method": "summation"}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -1,
+                        "from_end": 1,
+                        "to_start": 0,
+                        "to_end": 1
+                    }
+                },
+                {
+                    "method": "transform_to_tensorflow_buffer",
+                    "parameters": {"type": "float32", "shape": [1, 120, 120, 1]}
+                }
+            ],
+            "classifiers": ["gyroscope_y_encoder", "gyroscope_y_decoder"]
+        },
+        {
+            "name": "gyroscope_z_pipeline",
+            "input": {
+                "sensors": ["gyroscope"],
+                "data_collection": {
+                    "method": "time",
+                    "parameters": {"collect_ms": 2000}
+                },
+                "skip_samples": {
+                    "method": "time",
+                    "parameters": {"skip_ms": 400},
+                    "user_config": [
+                        {
+                            "var_name": "skip_ms",
+                            "friendly_name": "Gyroscope Z pipeline - evaluate the events every ms:",
+                            "category": "pipelines",
+                            "type": "bar",
+                            "low": 0,
+                            "high": 2000
+                        }
+                    ]
+                }
+            },
+            "preprocess": [
+                {
+                    "method": "extract_axes",
+                    "parameters": {"axes": ["z", "t"], "extract_timestamp": true}
+                },
+                {"method": "fixed_time", "parameters": {"samples_per_second": 60}},
+                {"method": "enforce_size", "parameters": {"shape": [120]}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -30,
+                        "from_end": 30,
+                        "to_start": -1,
+                        "to_end": 1
+                    }
+                },
+                {"method": "gaf", "parameters": {"method": "summation"}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -1,
+                        "from_end": 1,
+                        "to_start": 0,
+                        "to_end": 1
+                    }
+                },
+                {
+                    "method": "transform_to_tensorflow_buffer",
+                    "parameters": {"type": "float32", "shape": [1, 120, 120, 1]}
+                }
+            ],
+            "classifiers": ["gyroscope_z_encoder", "gyroscope_z_decoder"]
+        },
+        {
+            "name": "accelerometer_x_pipeline",
+            "input": {
+                "sensors": ["accelerometer"],
+                "data_collection": {
+                    "method": "time",
+                    "parameters": {"collect_ms": 2000}
+                },
+                "skip_samples": {
+                    "method": "time",
+                    "parameters": {"skip_ms": 400},
+                    "user_config": [
+                        {
+                            "var_name": "skip_ms",
+                            "friendly_name": "Accelerometer X pipeline - evaluate the events every ms:",
+                            "category": "pipelines",
+                            "type": "bar",
+                            "low": 0,
+                            "high": 2000
+                        }
+                    ]
+                }
+            },
+            "preprocess": [
+                {
+                    "method": "extract_axes",
+                    "parameters": {"axes": ["x", "t"], "extract_timestamp": true}
+                },
+                {"method": "fixed_time", "parameters": {"samples_per_second": 60}},
+                {"method": "enforce_size", "parameters": {"shape": [120]}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -30,
+                        "from_end": 30,
+                        "to_start": -1,
+                        "to_end": 1
+                    }
+                },
+                {"method": "gaf", "parameters": {"method": "summation"}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -1,
+                        "from_end": 1,
+                        "to_start": 0,
+                        "to_end": 1
+                    }
+                },
+                {
+                    "method": "transform_to_tensorflow_buffer",
+                    "parameters": {"type": "float32", "shape": [1, 120, 120, 1]}
+                }
+            ],
+            "classifiers": ["accelerometer_x_encoder", "accelerometer_x_decoder"]
+        },
+        {
+            "name": "accelerometer_y_pipeline",
+            "input": {
+                "sensors": ["accelerometer"],
+                "data_collection": {
+                    "method": "time",
+                    "parameters": {"collect_ms": 2000}
+                },
+                "skip_samples": {
+                    "method": "time",
+                    "parameters": {"skip_ms": 400},
+                    "user_config": [
+                        {
+                            "var_name": "skip_ms",
+                            "friendly_name": "Accelerometer Y pipeline - evaluate the events every ms:",
+                            "category": "pipelines",
+                            "type": "bar",
+                            "low": 0,
+                            "high": 2000
+                        }
+                    ]
+                }
+            },
+            "preprocess": [
+                {
+                    "method": "extract_axes",
+                    "parameters": {"axes": ["y", "t"], "extract_timestamp": true}
+                },
+                {"method": "fixed_time", "parameters": {"samples_per_second": 60}},
+                {"method": "enforce_size", "parameters": {"shape": [120]}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -30,
+                        "from_end": 30,
+                        "to_start": -1,
+                        "to_end": 1
+                    }
+                },
+                {"method": "gaf", "parameters": {"method": "summation"}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -1,
+                        "from_end": 1,
+                        "to_start": 0,
+                        "to_end": 1
+                    }
+                },
+                {
+                    "method": "transform_to_tensorflow_buffer",
+                    "parameters": {"type": "float32", "shape": [1, 120, 120, 1]}
+                }
+            ],
+            "classifiers": ["accelerometer_y_encoder", "accelerometer_y_decoder"]
+        },
+        {
+            "name": "accelerometer_z_pipeline",
+            "input": {
+                "sensors": ["accelerometer"],
+                "data_collection": {
+                    "method": "time",
+                    "parameters": {"collect_ms": 2000}
+                },
+                "skip_samples": {
+                    "method": "time",
+                    "parameters": {"skip_ms": 400},
+                    "user_config": [
+                        {
+                            "var_name": "skip_ms",
+                            "friendly_name": "Accelerometer Z pipeline - evaluate the events every ms:",
+                            "category": "pipelines",
+                            "type": "bar",
+                            "low": 0,
+                            "high": 2000
+                        }
+                    ]
+                }
+            },
+            "preprocess": [
+                {
+                    "method": "extract_axes",
+                    "parameters": {"axes": ["z", "t"], "extract_timestamp": true}
+                },
+                {"method": "fixed_time", "parameters": {"samples_per_second": 60}},
+                {"method": "enforce_size", "parameters": {"shape": [120]}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -30,
+                        "from_end": 30,
+                        "to_start": -1,
+                        "to_end": 1
+                    }
+                },
+                {"method": "gaf", "parameters": {"method": "summation"}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -1,
+                        "from_end": 1,
+                        "to_start": 0,
+                        "to_end": 1
+                    }
+                },
+                {
+                    "method": "transform_to_tensorflow_buffer",
+                    "parameters": {"type": "float32", "shape": [1, 120, 120, 1]}
+                }
+            ],
+            "classifiers": ["accelerometer_z_encoder", "accelerometer_z_decoder"]
+        },
+        {
+            "name": "magnetometer_x_pipeline",
+            "input": {
+                "sensors": ["magnetometer"],
+                "data_collection": {
+                    "method": "time",
+                    "parameters": {"collect_ms": 2000}
+                },
+                "skip_samples": {
+                    "method": "time",
+                    "parameters": {"skip_ms": 400},
+                    "user_config": [
+                        {
+                            "var_name": "skip_ms",
+                            "friendly_name": "Magnetometer X pipeline - evaluate the events every ms:",
+                            "category": "pipelines",
+                            "type": "bar",
+                            "low": 0,
+                            "high": 2000
+                        }
+                    ]
+                }
+            },
+            "preprocess": [
+                {
+                    "method": "extract_axes",
+                    "parameters": {"axes": ["x", "t"], "extract_timestamp": true}
+                },
+                {"method": "fixed_time", "parameters": {"samples_per_second": 30}},
+                {"method": "enforce_size", "parameters": {"shape": [60]}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -30,
+                        "from_end": 30,
+                        "to_start": -1,
+                        "to_end": 1
+                    }
+                },
+                {"method": "gaf", "parameters": {"method": "summation"}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -1,
+                        "from_end": 1,
+                        "to_start": 0,
+                        "to_end": 1
+                    }
+                },
+                {
+                    "method": "transform_to_tensorflow_buffer",
+                    "parameters": {"type": "float32", "shape": [1, 60, 60, 1]}
+                }
+            ],
+            "classifiers": ["magnetometer_x_encoder", "magnetometer_x_decoder"]
+        },
+        {
+            "name": "magnetometer_y_pipeline",
+            "input": {
+                "sensors": ["magnetometer"],
+                "data_collection": {
+                    "method": "time",
+                    "parameters": {"collect_ms": 2000}
+                },
+                "skip_samples": {
+                    "method": "time",
+                    "parameters": {"skip_ms": 400},
+                    "user_config": [
+                        {
+                            "var_name": "skip_ms",
+                            "friendly_name": "Magnetometer Y pipeline - evaluate the events every ms:",
+                            "category": "pipelines",
+                            "type": "bar",
+                            "low": 0,
+                            "high": 2000
+                        }
+                    ]
+                }
+            },
+            "preprocess": [
+                {
+                    "method": "extract_axes",
+                    "parameters": {"axes": ["y", "t"], "extract_timestamp": true}
+                },
+                {"method": "fixed_time", "parameters": {"samples_per_second": 30}},
+                {"method": "enforce_size", "parameters": {"shape": [60]}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -30,
+                        "from_end": 30,
+                        "to_start": -1,
+                        "to_end": 1
+                    }
+                },
+                {"method": "gaf", "parameters": {"method": "summation"}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -1,
+                        "from_end": 1,
+                        "to_start": 0,
+                        "to_end": 1
+                    }
+                },
+                {
+                    "method": "transform_to_tensorflow_buffer",
+                    "parameters": {"type": "float32", "shape": [1, 60, 60, 1]}
+                }
+            ],
+            "classifiers": ["magnetometer_y_encoder", "magnetometer_y_decoder"]
+        },
+        {
+            "name": "magnetometer_z_pipeline",
+            "input": {
+                "sensors": ["magnetometer"],
+                "data_collection": {
+                    "method": "time",
+                    "parameters": {"collect_ms": 2000}
+                },
+                "skip_samples": {
+                    "method": "time",
+                    "parameters": {"skip_ms": 400},
+                    "user_config": [
+                        {
+                            "var_name": "skip_ms",
+                            "friendly_name": "Magnetometer Z pipeline - evaluate the events every ms:",
+                            "category": "pipelines",
+                            "type": "bar",
+                            "low": 0,
+                            "high": 2000
+                        }
+                    ]
+                }
+            },
+            "preprocess": [
+                {
+                    "method": "extract_axes",
+                    "parameters": {"axes": ["z", "t"], "extract_timestamp": true}
+                },
+                {"method": "fixed_time", "parameters": {"samples_per_second": 30}},
+                {"method": "enforce_size", "parameters": {"shape": [60]}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -30,
+                        "from_end": 30,
+                        "to_start": -1,
+                        "to_end": 1
+                    }
+                },
+                {"method": "gaf", "parameters": {"method": "summation"}},
+                {
+                    "method": "normalize",
+                    "parameters": {
+                        "from_start": -1,
+                        "from_end": 1,
+                        "to_start": 0,
+                        "to_end": 1
+                    }
+                },
+                {
+                    "method": "transform_to_tensorflow_buffer",
+                    "parameters": {"type": "float32", "shape": [1, 60, 60, 1]}
+                }
+            ],
+            "classifiers": ["magnetometer_z_encoder", "magnetometer_z_decoder"]
+        }
+    ],
+    "anomaly_detectors": {
+        "gyroscope": {
+            "analyzer": {
+                "method": "threshold",
+                "parameters": {
+                    "threshold_amount": 0.04710747301578522,
+                    "pipelines": [
+                        "gyroscope_x_pipeline",
+                        "gyroscope_y_pipeline",
+                        "gyroscope_z_pipeline"
+                    ],
+                    "loss": "MeanSquaredError"
+                },
+                "user_config": [
+                    {
+                        "var_name": "threshold_amount",
+                        "friendly_name": "Gyroscope allowed Loss threshold amount",
+                        "category": "trust",
+                        "type": "bar",
+                        "low": 0.0,
+                        "high": 0.5
+                    }
+                ]
+            },
+            "on_detect_action": {
+                "method": "block",
+                "parameters": {"trust_level": 0.9},
+                "user_config": [
+                    {
+                        "var_name": "trust_level",
+                        "friendly_name": "Gyroscope allowed trust levels",
+                        "category": "trust",
+                        "type": "bar",
+                        "low": 0,
+                        "high": 1
+                    }
+                ]
+            }
+        },
+        "accelerometer": {
+            "analyzer": {
+                "method": "threshold",
+                "parameters": {
+                    "threshold_amount": 0.03904499113559723,
+                    "pipelines": [
+                        "accelerometer_x_pipeline",
+                        "accelerometer_y_pipeline",
+                        "accelerometer_z_pipeline"
+                    ],
+                    "loss": "MeanSquaredError"
+                },
+                "user_config": [
+                    {
+                        "var_name": "threshold_amount",
+                        "friendly_name": "Accelerometer allowed Loss threshold amount",
+                        "category": "trust",
+                        "type": "bar",
+                        "low": 0.0,
+                        "high": 0.5
+                    }
+                ]
+            },
+            "on_detect_action": {
+                "method": "block",
+                "parameters": {"trust_level": 0.9},
+                "user_config": [
+                    {
+                        "var_name": "trust_level",
+                        "friendly_name": "Accelerometer allowed trust levels",
+                        "category": "trust",
+                        "type": "bar",
+                        "low": 0,
+                        "high": 1
+                    }
+                ]
+            }
+        },
+        "magnetometer": {
+            "analyzer": {
+                "method": "threshold",
+                "parameters": {
+                    "threshold_amount": 0.03751678019762039,
+                    "pipelines": [
+                        "magnetometer_x_pipeline",
+                        "magnetometer_y_pipeline",
+                        "magnetometer_z_pipeline"
+                    ],
+                    "loss": "MeanSquaredError"
+                },
+                "user_config": [
+                    {
+                        "var_name": "threshold_amount",
+                        "friendly_name": "Magnetometer allowed Loss threshold amount",
+                        "category": "trust",
+                        "type": "bar",
+                        "low": 0.0,
+                        "high": 0.5
+                    }
+                ]
+            },
+            "on_detect_action": {
+                "method": "block",
+                "parameters": {"trust_level": 0.9},
+                "user_config": [
+                    {
+                        "var_name": "trust_level",
+                        "friendly_name": "Magnetometer allowed trust levels",
+                        "category": "trust",
+                        "type": "bar",
+                        "low": 0,
+                        "high": 1
+                    }
+                ]
+            }
+        }
+    },
+    "neural_networks": [
+        {
+            "name": "gyroscope_x_encoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "gyroscope/gyroscope_500msx4_(120, 120)_300_encoderx.h5",
+                "input_shape": [1, 120, 120, 1],
+                "output_shape": [300],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "gyroscope_y_encoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "gyroscope/gyroscope_500msx4_(120, 120)_300_encodery.h5",
+                "input_shape": [1, 120, 120, 1],
+                "output_shape": [300],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "gyroscope_z_encoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "gyroscope/gyroscope_500msx4_(120, 120)_300_encoderz.h5",
+                "input_shape": [1, 120, 120, 1],
+                "output_shape": [300],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "gyroscope_x_decoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "gyroscope/gyroscope_500msx4_(120, 120)_300_decoderx.h5",
+                "input_shape": [300],
+                "output_shape": [1, 120, 120, 1],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "gyroscope_y_decoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "gyroscope/gyroscope_500msx4_(120, 120)_300_decodery.h5",
+                "input_shape": [300],
+                "output_shape": [1, 120, 120, 1],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "gyroscope_z_decoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "gyroscope/gyroscope_500msx4_(120, 120)_300_decoderz.h5",
+                "input_shape": [300],
+                "output_shape": [1, 120, 120, 1],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "accelerometer_x_encoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "accelerometer/accelerometer_500msx4_(120, 120)_300_encoderx.h5",
+                "input_shape": [1, 120, 120, 1],
+                "output_shape": [300],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "accelerometer_y_encoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "accelerometer/accelerometer_500msx4_(120, 120)_300_encodery.h5",
+                "input_shape": [1, 120, 120, 1],
+                "output_shape": [300],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "accelerometer_z_encoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "accelerometer/accelerometer_500msx4_(120, 120)_300_encoderz.h5",
+                "input_shape": [1, 120, 120, 1],
+                "output_shape": [300],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "accelerometer_x_decoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "accelerometer/accelerometer_500msx4_(120, 120)_300_decoderx.h5",
+                "input_shape": [300],
+                "output_shape": [1, 120, 120, 1],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "accelerometer_y_decoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "accelerometer/accelerometer_500msx4_(120, 120)_300_decodery.h5",
+                "input_shape": [300],
+                "output_shape": [1, 120, 120, 1],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "accelerometer_z_decoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "accelerometer/accelerometer_500msx4_(120, 120)_300_decoderz.h5",
+                "input_shape": [300],
+                "output_shape": [1, 120, 120, 1],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "magnetometer_x_encoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "magnetometer/magnetometer_500msx4_(60, 60)_300_encoderx.h5",
+                "input_shape": [1, 60, 60, 1],
+                "output_shape": [300],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "magnetometer_y_encoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "magnetometer/magnetometer_500msx4_(60, 60)_300_encodery.h5",
+                "input_shape": [1, 60, 60, 1],
+                "output_shape": [300],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "magnetometer_z_encoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "magnetometer/magnetometer_500msx4_(60, 60)_300_encoderz.h5",
+                "input_shape": [1, 60, 60, 1],
+                "output_shape": [300],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "magnetometer_x_decoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "magnetometer/magnetometer_500msx4_(60, 60)_300_decoderx.h5",
+                "input_shape": [300],
+                "output_shape": [1, 60, 60, 1],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "magnetometer_y_decoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "magnetometer/magnetometer_500msx4_(60, 60)_300_decodery.h5",
+                "input_shape": [300],
+                "output_shape": [1, 60, 60, 1],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        },
+        {
+            "name": "magnetometer_z_decoder",
+            "method": "TensorFlowLiteNeuronalNetwork",
+            "parameters": {
+                "filename": "magnetometer/magnetometer_500msx4_(60, 60)_300_decoderz.h5",
+                "input_shape": [300],
+                "output_shape": [1, 60, 60, 1],
+                "input_type": "float",
+                "output_type": "float"
+            }
+        }
+    ]
+}

@@ -1,0 +1,3 @@
+include ':SDIOSClientLib'
+rootProject.name='SDIOS-ClientLib'
+include ':app'

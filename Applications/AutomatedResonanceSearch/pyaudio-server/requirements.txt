@@ -1,0 +1,5 @@
+fastapi
+pyaudio
+pyopenssl
+pandas
+uvicorn

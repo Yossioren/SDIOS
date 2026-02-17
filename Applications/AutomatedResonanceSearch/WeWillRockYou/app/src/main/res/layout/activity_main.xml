@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appTitle"
+            android:textSize="33sp" />
+
+        <EditText
+            android:id="@+id/server_dest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="https://Rock-you-Server.com"
+            android:inputType="textUri" />
+
+        <Button
+            android:id="@+id/rock_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/start_rocking" />
+
+        <Button
+            android:id="@+id/record_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/start_recording" />
+
+        <Button
+            android:id="@+id/stop_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/stop" />
+
+        <EditText
+            android:id="@+id/measure_instructions"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:inputType="text"
+            android:hint="from(Hz) to(Hz) jump(Hz) dwell(ms)"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/Hz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HZ"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="30"
+            android:textAlignment="center" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:layout_marginTop="16dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#3F51B5" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+        <RadioGroup
+            android:id="@+id/myRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/radioGyro"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/graph">
+
+            <RadioButton
+                android:id="@+id/radioGyro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/gyroscope_short" />
+
+            <RadioButton
+                android:id="@+id/radioAccel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/accelerometer_short" />
+
+            <RadioButton
+                android:id="@+id/radioMagnet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/magenetormeter_short" />
+
+            <RadioButton
+                android:id="@+id/radioEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/empty" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/fin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/finish"
+            android:textColor="@color/colorAccent"
+            android:textSize="55sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </LinearLayout>
+</ScrollView>
