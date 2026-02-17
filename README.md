@@ -1,13 +1,11 @@
 # SDIOS
 ![Threat model](threat_model.png)
 
-SDIOS (Sensor Defense In software) is a project started at Professor [Yossi Oren's lab](https://orenlab.sise.bgu.ac.il/) at [Ben-Gurion University of the Negev](https://www.bgu.ac.il/en/).
+This is the artifact repository for the paper [Engineering Sensor Spoofing Protection into the Android Operating System](https://orenlab.sise.bgu.ac.il/p/SDIOS), by Roy Hershkovitz and Yossi Oren.
 
 In short, we protect MEMS sensors against acoustic attacks.
 
-In [previous research](https://doi.org/10.1016/j.engappai.2020.103904), we presented SDIOS as a system to defend embedded systems.
-
-In this research we present SDIOS Android operation system which capable of finding anomalies in sensors output and react to the anomalies before it reached reling applications on the device.
+In [previous research](https://orenlab.sise.bgu.ac.il/p/SDI), we presented a system to defend embedded sensors. This research extends this work and integrates it into the Android operating system.
 
 
 ## What is this about?
